@@ -1,0 +1,7 @@
+= simple_form_for @online, url: my_onlines_path do |f|
+  = f.input :user_id, as: :hidden
+  = f.input :event_id, collection: Event.current
+  = f.input :title
+  = f.input :description
+  = f.input :photo
+  = f.submit "Сохранить"

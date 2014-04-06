@@ -14,12 +14,6 @@ GIT
       activesupport (>= 2.3.2)
 
 GIT
-  remote: git://github.com/cambridge-healthcare/grape-cors.git
-  revision: 6685d583fa944086247423d4db7ab5431a5c9265
-  specs:
-    grape-cors (0.0.1)
-
-GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: a21b7843344384cc6fef8ec7ce018fdbc8c3ccdf
   specs:
@@ -36,21 +30,6 @@ GIT
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
-
-GIT
-  remote: git://github.com/intridea/grape.git
-  revision: 4934baa1803498517e16603452e5b166f19dd042
-  specs:
-    grape (0.7.0)
-      activesupport
-      builder
-      hashie (>= 1.2.0)
-      multi_json (>= 1.3.2)
-      multi_xml (>= 0.5.2)
-      rack (>= 1.3.0)
-      rack-accept
-      rack-mount
-      virtus (>= 1.0.0)
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
@@ -119,13 +98,7 @@ GEM
       activesupport (>= 3.0.0)
       rake (>= 0.8.7)
     awesome_print (1.1.0)
-    axiom-types (0.0.5)
-      descendants_tracker (~> 0.0.1)
-      ice_nine (~> 0.9)
     bcrypt-ruby (3.1.2)
-    better_errors (0.9.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bond (0.4.3)
@@ -157,6 +130,11 @@ GEM
       xpath (~> 2.0)
     capybara-screenshot (0.3.13)
       capybara (>= 1.0, < 3)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     celluloid-io (0.15.0)
@@ -167,8 +145,6 @@ GEM
     choice (0.1.6)
     chunky_png (1.2.8)
     coderay (1.1.0)
-    coercible (1.0.0)
-      descendants_tracker (~> 0.0.1)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -194,7 +170,6 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
-    descendants_tracker (0.0.3)
     devise (3.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -210,7 +185,6 @@ GEM
     email_spec (1.5.0)
       launchy (~> 2.1)
       mail (~> 2.2)
-    equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -233,16 +207,6 @@ GEM
     fssm (0.2.10)
     gherkin (2.12.0)
       multi_json (~> 1.3)
-    grape-entity (0.4.1)
-      activesupport
-      multi_json (>= 1.3.2)
-    grape-swagger (0.7.2)
-      grape (>= 0.2.0)
-      grape-entity (>= 0.3.0)
-      kramdown (>= 1.3.1)
-    grape-swagger-rails (0.0.8)
-      grape-swagger (~> 0.7.2)
-      railties (>= 3.2.12)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -289,7 +253,6 @@ GEM
     hpricot (0.8.6)
     http_parser.rb (0.5.3)
     i18n (0.6.9)
-    ice_nine (0.11.0)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
@@ -313,7 +276,6 @@ GEM
       kaminari (>= 0.13.0)
       rails
     kgio (2.8.1)
-    kramdown (1.3.1)
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (2.5.0)
@@ -341,12 +303,13 @@ GEM
       railties
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     mini_portile (0.5.1)
     minitest (4.7.5)
     mono_logger (1.1.0)
     multi_json (1.7.9)
     multi_test (0.0.2)
-    multi_xml (0.5.5)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -404,12 +367,8 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
-    rack-accept (0.4.5)
-      rack (>= 0.4)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    rack-mount (0.8.3)
-      rack (>= 1.0.0)
     rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
@@ -487,6 +446,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-graphviz (1.0.9)
     ruby-prof (0.13.0)
+    ruby_gntp (0.3.4)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
     sass (3.2.14)
@@ -532,6 +492,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
+    subexec (0.2.3)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     thin (1.5.1)
@@ -564,11 +525,6 @@ GEM
       activesupport (>= 3.0.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
-    virtus (1.0.1)
-      axiom-types (~> 0.0.5)
-      coercible (~> 1.0)
-      descendants_tracker (~> 0.0.1)
-      equalizer (~> 0.0.7)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -585,7 +541,6 @@ DEPENDENCIES
   airbrake!
   authority
   awesome_print
-  better_errors
   binding_of_caller
   bond
   bootstrap-sass (~> 3.0.2.0)
@@ -595,19 +550,18 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.0)
   capybara
   capybara-screenshot
+  carrierwave
   coffee-rails!
   commands
   compass
   compass-rails
   cucumber-rails (>= 1.3.0)
   database_cleaner
+  devise
   email_spec (>= 1.2.1)
   factory_girl_rails
   fakeredis
   foreman
-  grape!
-  grape-cors!
-  grape-swagger-rails
   guard (>= 2.4.0)
   guard-ctags-bundler
   guard-cucumber
@@ -629,6 +583,7 @@ DEPENDENCIES
   launchy (>= 2.1.2)
   mailcatcher
   meta_request
+  mini_magick
   pg
   pg_array_parser
   poltergeist
@@ -647,6 +602,7 @@ DEPENDENCIES
   quiet_assets
   rails (~> 4.0.0)
   rails-erd
+  rb-fsevent (~> 0.9.1)
   rb-inotify (~> 0.9)
   recipient_interceptor
   resque_spec
@@ -655,6 +611,7 @@ DEPENDENCIES
   rspec-prof
   rspec-rails (>= 2.11.0)
   ruby-graphviz
+  ruby_gntp
   ruby_parser (>= 2.3.1)
   sass-rails
   sdoc

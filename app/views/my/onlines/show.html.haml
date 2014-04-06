@@ -1,0 +1,12 @@
+%h1= @online.title
+= link_to @online.event.title, event_path(@online.event)
+%p= @online.description
+%p= image_tag @online.photo.url(:thumb) if @online.photo
+
+= render 'message_form', message: @message unless "#TODO user have permissions".empty?
+
+%ul
+  - @online.messages.each do |message|
+    %li
+      = I18n.l message.created_at, format: :time
+      = message.body

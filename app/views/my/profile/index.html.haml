@@ -1,0 +1,7 @@
+%h1 Привет, #{@user.full_name}!
+
+= link_to "Создать онлайн", new_my_online_path
+
+%ul
+  - @user.onlines.each do |online|
+    %li=link_to online.title, "#" 

@@ -2,7 +2,7 @@ defaults: &defaults
   app:
     title: Rails4Template
 
-    asset_host: http://Rails4Template.icfdev.ru/
+    asset_host: http://localhost:3000
 
     default_url_options: &default_url_options
       host: HOSTNAME

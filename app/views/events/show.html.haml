@@ -1,0 +1,10 @@
+%h1= @event.title
+%p= @event.description
+= image_tag @event.photo.url(:thumb) if @event.photo
+
+- @event.onlines.each do |online|
+  %h3= link_to online.title, my_online_path(online)
+  %p.small= online.description
+  %p.small= online.user.full_name
+  - online.messages.last(3).each do |message|
+    %li=message.body

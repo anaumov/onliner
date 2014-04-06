@@ -3,12 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '~> 4.0.0'
 #gem 'rails',     github: 'rails/rails'
 #gem 'arel',      github: 'rails/arel'
-# gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
-
-gem 'grape', github: 'intridea/grape'
-gem 'grape-cors', github: 'cambridge-healthcare/grape-cors'
-gem 'grape-swagger-rails'
-#gem 'grape-entity'
 
 # Use postgresql as the database for ActiveRecord
 gem 'pg'
@@ -19,6 +13,7 @@ gem 'settingslogic'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Авторизация и аутентификация
+gem 'devise'
 gem 'authority'
 # gem 'rolify'
 
@@ -44,8 +39,8 @@ gem 'semver2'
 # Почта
 gem 'recipient_interceptor'
 
-#gem 'mini_magick'
-#gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave'
 
 # Контроллеры
 #gem 'has_scope'
@@ -185,7 +180,6 @@ group :development do
   gem "hpricot", ">= 0.8.6"
   gem "ruby_parser", ">= 2.3.1"
 
-  gem "better_errors"
   gem "binding_of_caller"
 
   # Поддержка для rails_panel в chrome

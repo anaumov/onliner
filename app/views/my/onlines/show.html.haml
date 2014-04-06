@@ -3,10 +3,10 @@
 %p= @online.description
 %p= image_tag @online.photo.url(:thumb) if @online.photo
 
-= render 'message_form', message: @message unless "#TODO user have permissions".empty?
+= render 'my/messages/form', message: @message unless "#TODO user have permissions".empty?
 
-%ul
+- #TODO перенести в cell, весь список
+%div{role: 'spinner'}
+%ul{role: 'messages-container'}
   - @online.messages.each do |message|
-    %li
-      = I18n.l message.created_at, format: :time
-      = message.body
+    = render "my/messages/single_message", message: message

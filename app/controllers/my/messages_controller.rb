@@ -1,8 +1,12 @@
 class My::MessagesController < ApplicationController
   def create
     @message = Message.new permitted_params[:message]
-    @message.save!
-    redirect_to my_online_path(@message.online)
+
+    if @message.save
+      render :single_message, layout: false
+    else
+      render json: {errors: @message.all_errors}
+    end
   end
 
 private

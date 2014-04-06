@@ -3,7 +3,7 @@
 #= require jquery.turbolinks
 #= require turbolinks
 #= require bootstrap
-#= require_tree .
+#= require front/messages
 
 # require jquery.freetile
 # require jquery_ujs

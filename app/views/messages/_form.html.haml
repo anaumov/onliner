@@ -1,0 +1,8 @@
+.new_message-form
+  = simple_form_for message, url: messages_path, html: {role: 'message-form'} do |f|
+    = f.input :user_id, as: :hidden
+    = f.input :online_id, as: :hidden
+    .form-group
+      = f.input_field :body, role: 'message-body', class: 'form-control', placeholder: 'Новое сообщение'
+      %p{role: 'message-body-errors'}
+    %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить

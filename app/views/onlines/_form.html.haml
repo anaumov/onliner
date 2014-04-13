@@ -1,0 +1,6 @@
+= f.input :user_id, as: :hidden
+= f.input :event_id, collection: Event.current
+= f.input :title
+= f.input :description
+= f.input :photo, hint: (image_tag(f.object.photo.url(:thumb)) if f.object.photo)
+= f.submit "Сохранить"

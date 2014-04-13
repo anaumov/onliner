@@ -13,7 +13,7 @@ $ ->
 class MessagesController
   sendMessage: ->
     $.ajax
-      url: '/my/messages'
+      url: '/messages'
       data: $('form[role=message-form]').serializeArray()
       method: 'POST'
       beforeSend: ->
@@ -23,5 +23,5 @@ class MessagesController
           $('p[role=message-body-errors]').html(data.errors)
         else
           $('div[role=spinner]').removeClass('hidden')
-          $('ul[role=messages-container]').prepend(data)
+          $('div[role=messages-container]').prepend(data)
           $('input[role=message-body]').val('')

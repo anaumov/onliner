@@ -14,9 +14,11 @@
       .container
         .content
           .row
-            .col-md-12
+            .col-sm-2
+            .col-sm-8
               = render 'layouts/messages'
               = yield
+            .col-sm-2
       %footer.footer
         .container
           %small.muted= app_version

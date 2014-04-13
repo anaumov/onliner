@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :onlines
   has_many :messages
 
+  mount_uploader :avatar, AvatarUploader
+
 end

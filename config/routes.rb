@@ -16,16 +16,23 @@ Rails4Template::Application.routes.draw do
     resources :events
   end
 
-  resources :events, only: [:show] 
+  resources :events, only: [:show, :index]
 
-  namespace :my do
-    root 'profile#index'
+  get ":username" => 'profile#index', as: 'profile'
 
-    resources :onlines
-    resources :messages
-  end
+  get ":username/onlines/new" => 'onlines#new', as: 'new_online'
+  get ":username/onlines/:id" => 'onlines#show', as: 'online'
+  get ":username/onlines/:id/edit" => 'onlines#edit', as: 'edit_online'
+  put ":username/onlines/:id" => 'onlines#update', as: 'update_online'
+  post ":username/onlines" => 'onlines#create', as: 'onlines'
 
-  #get ":username" => 'users#profile'
+  post "messages" => 'messages#create', as: 'messages'
+
+
+  get ":username/edit" => 'profile#edit', as: 'edit_profile'
+  put ":username/update" => 'profile#update', as: 'update_profile'
+
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

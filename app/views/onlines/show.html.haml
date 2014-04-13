@@ -1,0 +1,21 @@
+%h1.profile-header= @online.title
+= edit_online_link(@online)
+
+.row
+  .col-xs-3.user-info-block
+    = render 'onlines/user_block', user: local_user
+  .col-xs-9
+    %h3= link_to @online.event.title, event_path(@online.event)
+    %small= @online.description
+
+-#%p= image_tag @online.photo.url(:thumb) if @online.photo
+
+- if self_profile?
+  = render 'messages/form', message: current_user.messages.new(online_id: @online.id)
+
+- #TODO перенести в cell, весь список
+%div{role: 'spinner'}
+
+%div.messages-bock{role: 'messages-container'}
+  - @online.messages.each do |message|
+    = render "messages/single_message", message: message

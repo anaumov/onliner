@@ -9,7 +9,6 @@ gem 'pg'
 gem 'pg_array_parser'
 
 gem 'settingslogic'
-
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Авторизация и аутентификация
@@ -53,9 +52,9 @@ gem 'inherited_resources'
 
 # Вьюхи и презентеры
 gem 'active_link_to'
-
 #gem 'draper'
 #gem 'cells'
+
 #gem 'breadcrumbs_on_rails'
 #gem 'tabulous'
 # gem 'authbuttons-rails'

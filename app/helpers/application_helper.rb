@@ -25,4 +25,26 @@ module ApplicationHelper
     content_tag :span, count, options
   end
 
+  def local_user
+    @local_user ||= User.find_by_username params[:username]
+  end
+
+  def self_profile?
+    local_user == current_user
+  end
+
+  def app_online_path online
+    online_path(username: online.user.username, id: online.id)
+  end
+
+  def edit_online_link online
+    if self_profile?
+      link = link_to 'Редактировать', edit_online_path(username: online.user.username, id: online.id)
+      content_tag :small, link, style: "position: relative; bottom: 20px;"
+    end
+  end
+
+  def app_update_online_path online
+    update_online_path(username: @online.user.username, id: @online.id)
+  end
 end

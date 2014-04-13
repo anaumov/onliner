@@ -1,4 +1,4 @@
-class My::MessagesController < ApplicationController
+class MessagesController < ApplicationController
   def create
     @message = Message.new permitted_params[:message]
 

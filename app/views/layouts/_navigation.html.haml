@@ -8,3 +8,4 @@
       = link_to Settings.app.title, root_url, :class => 'navbar-brand'
     .collapse.navbar-collapse
       = render_navigation :expand_all => true, :renderer => :bootstrap
+      = link_to 'Выход', destroy_user_session_path, method: :delete

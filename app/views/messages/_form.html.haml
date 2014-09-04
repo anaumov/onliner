@@ -5,4 +5,8 @@
     .form-group
       = f.input_field :body, role: 'message-body', class: 'form-control', placeholder: 'Новое сообщение'
       %p{role: 'message-body-errors'}
-    %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить
+  = f.fields_for :photos do |photo|
+    = photo.label :file
+    = photo.file_field :file, multiple: true
+    = photo.input_field :remote_file_url
+  %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить

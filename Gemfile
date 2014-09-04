@@ -149,7 +149,6 @@ group :development do
   gem 'bond'
   gem 'jist'
   gem 'pry-rails'
-  gem 'pry-theme'
 
   gem 'pry-pretty-numeric'
   gem 'pry-syntax-hacks'

@@ -362,8 +362,6 @@ GEM
       pry (>= 0.9.11)
     pry-syntax-hacks (0.0.6)
       pry (>= 0.9.8)
-    pry-theme (0.2.0)
-      json
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -598,7 +596,6 @@ DEPENDENCIES
   pry-remote
   pry-stack_explorer
   pry-syntax-hacks
-  pry-theme
   quiet_assets
   rails (~> 4.0.0)
   rails-erd

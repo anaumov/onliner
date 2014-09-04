@@ -18,6 +18,10 @@ Rails4Template::Application.routes.draw do
 
   resources :events, only: [:show, :index]
 
+  post "messages" => 'messages#create', as: 'messages'
+  get "last_messages" => 'messages#last_messages'
+
+
   get ":username" => 'profile#index', as: 'profile'
 
   get ":username/onlines/new" => 'onlines#new', as: 'new_online'
@@ -26,7 +30,6 @@ Rails4Template::Application.routes.draw do
   put ":username/onlines/:id" => 'onlines#update', as: 'update_online'
   post ":username/onlines" => 'onlines#create', as: 'onlines'
 
-  post "messages" => 'messages#create', as: 'messages'
 
 
   get ":username/edit" => 'profile#edit', as: 'edit_profile'

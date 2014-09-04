@@ -9,6 +9,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def last_messages
+    last_viewed_message = Message.find params[:last_message_id]
+    @messages = Message.last_online_messages(last_viewed_message, params[:online_id])
+    render layout: false
+  end
+
 private
   def permitted_params
     params.permit!

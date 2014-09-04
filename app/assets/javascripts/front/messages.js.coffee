@@ -10,6 +10,10 @@ $ ->
       e.preventDefault()
       window.controller.sendMessage()
 
+  window.setLongPull = () ->
+    # заменить на цикл
+    setTimeout window.controller.pullMessage, 200    
+
 class MessagesController
   sendMessage: ->
     $.ajax
@@ -25,3 +29,15 @@ class MessagesController
           $('div[role=spinner]').removeClass('hidden')
           $('div[role=messages-container]').prepend(data)
           $('input[role=message-body]').val('')
+
+  pullMessage: ->
+    $.ajax
+      url: '/last_messages'
+      data: $('form[role=last-message-form]').serializeArray()
+      method: 'GET'
+      success: (data, status, resp) ->
+        if data
+          $('div[role=messages-container]').prepend(data)
+          lastMessageEl = $('.messages-bock p')[0]
+          $('#last_message_id').val $(lastMessageEl).data('id') 
+  

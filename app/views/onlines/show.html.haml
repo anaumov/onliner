@@ -16,6 +16,15 @@
 - #TODO перенести в cell, весь список
 %div{role: 'spinner'}
 
+= form_tag '', role: 'last-message-form' do
+  = hidden_field_tag :last_message_id, @online.messages.last(2).first.id
+  = hidden_field_tag :online_id, @online.id
+
 %div.messages-bock{role: 'messages-container'}
   - @online.messages.each do |message|
     = render "messages/single_message", message: message
+
+:javascript
+  $.ready(function() {
+    window.setLongPull()
+  })

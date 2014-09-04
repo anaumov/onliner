@@ -3,6 +3,8 @@ class Message < ActiveRecord::Base
   belongs_to :online
   validates :body, :user_id, :online_id, presence: true
 
+  scope :last_online_messages, -> (message, online_id){where("created_at > ?", message.created_at).where(online_id: online_id)}
+
   def all_errors
     errors.messages.map do |key, value|
       "#{ru_field(key)} #{value.join(', ')}"

@@ -1,11 +1,11 @@
 defaults: &defaults
   app:
-    title: Rails4Template
+    title: Онлайнер
 
     asset_host: http://localhost:3000
 
     default_url_options: &default_url_options
-      host: HOSTNAME
+      host: amliner.ru
       port: 80
 
   action_mailer: &action_mailer
@@ -14,8 +14,8 @@ defaults: &defaults
       <<: *default_url_options
 
   mailer_defaults: &mailer_defaults
-    from: 'noreply@HOSTNAME'
-    host: HOSTNAME
+    from: 'noreply@amliner.ru'
+    host: amliner.ru
 
 development:
   <<: *defaults

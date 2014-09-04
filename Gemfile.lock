@@ -444,7 +444,6 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-graphviz (1.0.9)
     ruby-prof (0.13.0)
-    ruby_gntp (0.3.4)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
     sass (3.2.14)
@@ -599,7 +598,6 @@ DEPENDENCIES
   quiet_assets
   rails (~> 4.0.0)
   rails-erd
-  rb-fsevent (~> 0.9.1)
   rb-inotify (~> 0.9)
   recipient_interceptor
   resque_spec
@@ -608,7 +606,6 @@ DEPENDENCIES
   rspec-prof
   rspec-rails (>= 2.11.0)
   ruby-graphviz
-  ruby_gntp
   ruby_parser (>= 2.3.1)
   sass-rails
   sdoc

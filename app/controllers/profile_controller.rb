@@ -13,7 +13,7 @@ class ProfileController < ApplicationController
     if @user.update_attributes(permitted_params[:user])
       redirect_to profile_path, notice: "Ваш профиль обновлен!"
     else
-      redner :edit
+      render :edit
     end
   end
 

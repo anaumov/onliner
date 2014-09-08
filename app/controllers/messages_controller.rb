@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
+
   def create
     @message = Message.new permitted_params[:message]
-
     if @message.save
       render :single_message, layout: false
     else

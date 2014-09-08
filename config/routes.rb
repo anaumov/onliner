@@ -5,7 +5,7 @@ Rails4Template::Application.routes.draw do
   ## scope subdomain: 'api', constraints: { subdomain: 'api' } do
   #mount GrapeSwaggerRails::Engine => '/api'
   #mount API => '/api'
- 
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
@@ -21,7 +21,6 @@ Rails4Template::Application.routes.draw do
   post "messages" => 'messages#create', as: 'messages'
   get "last_messages" => 'messages#last_messages'
 
-
   get ":username" => 'profile#index', as: 'profile'
 
   get ":username/onlines/new" => 'onlines#new', as: 'new_online'
@@ -30,12 +29,8 @@ Rails4Template::Application.routes.draw do
   put ":username/onlines/:id" => 'onlines#update', as: 'update_online'
   post ":username/onlines" => 'onlines#create', as: 'onlines'
 
-
-
   get ":username/edit" => 'profile#edit', as: 'edit_profile'
   put ":username/update" => 'profile#update', as: 'update_profile'
-
-  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

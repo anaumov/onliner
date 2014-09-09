@@ -16,11 +16,12 @@ Rails4Template::Application.routes.draw do
     resources :events
   end
 
-  resources :events, only: [:show, :index]
+  resources :events, only: [:new, :create]
 
   post "messages" => 'messages#create', as: 'messages'
   get "last_messages" => 'messages#last_messages'
 
+  get "events" => 'events#index'
   get ":username" => 'profile#index', as: 'profile'
 
   get ":username/onlines/new" => 'onlines#new', as: 'new_online'
@@ -31,6 +32,9 @@ Rails4Template::Application.routes.draw do
 
   get ":username/edit" => 'profile#edit', as: 'edit_profile'
   put ":username/update" => 'profile#update', as: 'update_profile'
+
+  get "events/:date" => 'events#events_by_date', as: 'events_by_date'
+  get "events/:date/:slug" => 'events#show', as: 'event_date_slug'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -122,6 +122,9 @@ gem 'coffee-rails', github: 'rails/coffee-rails'
 
 # gem 'select2-rails'
 
+# Конвертация символов из кириллицы в латиницу и обратно
+gem 'cyrillizer'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -225,12 +228,12 @@ group :test do
 
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-  
+
   gem "database_cleaner"
   gem "capybara"
   gem 'capybara-screenshot'
   gem 'poltergeist'
-  
+
   gem "launchy", ">= 2.1.2"
   gem 'turn', :require => false
   #gem "test_active_admin", :git => "git://github.com/BrandyMint/test_active_admin.git"

@@ -47,4 +47,8 @@ module ApplicationHelper
   def app_update_online_path online
     update_online_path(username: @online.user.username, id: @online.id)
   end
+
+  def event_path(event)
+    event_date_slug_path(date: event.created_at.strftime("%d-%m-%Y"), slug: event.slug)
+  end
 end

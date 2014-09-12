@@ -51,4 +51,16 @@ module ApplicationHelper
   def event_path(event)
     event_date_slug_path(date: event.created_at.strftime("%d-%m-%Y"), slug: event.slug)
   end
+
+  def date_format_messages(date)
+    today = DateTime.now
+    if date >= today.beginning_of_day
+      :time
+    elsif date < today.beginning_of_day
+      :time_date
+    elsif date < today.beginning_of_year
+      :time_date_year
+    end
+  end
+
 end

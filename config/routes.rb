@@ -17,18 +17,13 @@ Rails4Template::Application.routes.draw do
   end
 
   resources :events, only: [:new, :create]
+  resources :onlines
 
   post "messages" => 'messages#create', as: 'messages'
   get "last_messages" => 'messages#last_messages'
 
   get "events" => 'events#index'
   get ":username" => 'profile#index', as: 'profile'
-
-  get ":username/onlines/new" => 'onlines#new', as: 'new_online'
-  get ":username/onlines/:id" => 'onlines#show', as: 'online'
-  get ":username/onlines/:id/edit" => 'onlines#edit', as: 'edit_online'
-  put ":username/onlines/:id" => 'onlines#update', as: 'update_online'
-  post ":username/onlines" => 'onlines#create', as: 'onlines'
 
   get ":username/edit" => 'profile#edit', as: 'edit_profile'
   put ":username/update" => 'profile#update', as: 'update_profile'

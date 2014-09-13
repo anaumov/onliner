@@ -14,7 +14,7 @@ class OnlinesController < ApplicationController
   end
 
   def new
-    @online = Online.new(user_id: current_user.id)
+    @online = current_user.onlines.build(event_id: params[:event_id])
   end
 
   def edit

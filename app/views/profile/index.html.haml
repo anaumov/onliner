@@ -1,7 +1,9 @@
 .row.event-block
   .col-xs-3.user-info-block.event-user-block
     = image_tag local_user.avatar.url(:thumb), class: 'round-avatar'
-    %h5= local_user.full_name
+    - if self_profile?
+      = link_to "Редактировать профиль", edit_profile(local_user)
+    %h5= current_user.full_name
     %small.user-desc= local_user.bio
   .col-xs-9.last-messages-block
     - local_user.onlines.each do |online|

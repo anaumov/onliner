@@ -4,7 +4,11 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    if current_user.username == params[:username]
+      @user = current_user
+    else
+      redirect_to profile_path
+    end
   end
 
   def update

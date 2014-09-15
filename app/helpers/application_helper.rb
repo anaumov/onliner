@@ -63,4 +63,8 @@ module ApplicationHelper
     end
   end
 
+  def edit_profile(user)
+    edit_profile_path(username: user.username)
+  end
+
 end

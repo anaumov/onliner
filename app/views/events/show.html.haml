@@ -1,5 +1,6 @@
 %h1= @event.title
 %p= @event.description
+%p= link_to "Создать онлайн", new_online_path(event_id: @event.id)
 
 - @event.onlines.each do |online|
  = render "onlines/block", online: online

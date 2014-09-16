@@ -22,6 +22,8 @@ Rails4Template::Application.routes.draw do
   post "messages" => 'messages#create', as: 'messages'
   get "last_messages" => 'messages#last_messages'
 
+  post "photos" => 'photos#create', as: 'photos'
+
   get "events" => 'events#index'
   get ":username" => 'profile#index', as: 'profile'
 

@@ -73,6 +73,7 @@ gem 'kaminari-bootstrap'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+gem 'jquery-fileupload-rails'
 gem 'role-rails'
 
 #gem 'nilify_blanks', :git => 'git://github.com/rubiety/nilify_blanks.git'

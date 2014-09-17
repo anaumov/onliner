@@ -261,6 +261,9 @@ GEM
       activesupport (>= 3.0.0)
     jist (1.5.1)
       json
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -575,6 +578,7 @@ DEPENDENCIES
   inherited_resources
   jbuilder (~> 1.0.1)
   jist
+  jquery-fileupload-rails
   jquery-rails
   jquery-turbolinks
   kaminari

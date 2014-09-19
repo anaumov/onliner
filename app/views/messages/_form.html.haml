@@ -7,12 +7,13 @@
       %p{role: 'message-body-errors'}
   %p
     Загрузить фото
+    = simple_form_for Photo.new, url: photos_path do |f|
+      = f.input_field :message_id, as: :hidden, value: message.id
+      = f.input_field :event_id, as: :hidden, value: message.online.event_id
+      = f.input_field :online_id, as: :hidden, value: message.online_id
+      = f.file_field :file, multiple: true, name: "photo[file]"
     #photos
-      = simple_form_for Photo.new, url: photos_path do |photo|
-        = photo.input_field :message_id, as: :hidden, value: message.id
-        = photo.input_field :event_id, as: :hidden, value: message.online.event_id
-        = photo.input_field :online_id, as: :hidden, value: message.online_id
-        = photo.file_field :file, multiple: true, name: "photo[file]"
+
   %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить
 
 

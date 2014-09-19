@@ -20,7 +20,6 @@ Rails4Template::Application.routes.draw do
   resources :onlines
 
   post "messages" => 'messages#create', as: 'messages'
-  put "messages/assing_photos_to_message" => 'messages#assing_photos_to_message'
   get "last_messages" => 'messages#last_messages'
 
   post "photos" => 'photos#create', as: 'photos'

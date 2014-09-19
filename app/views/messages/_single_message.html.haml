@@ -1,12 +1,5 @@
-%p{'data-id' => message.id}
+%p{'data-id' => message.id, role: 'online-message'}
   %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
   = message.body
   - message.photos.each do |p|
     = image_tag(p.file.thumb.url)
-  %p
-    #photos
-  = simple_form_for Photo.new, url: photos_path do |photo|
-    = photo.input_field :message_id, as: :hidden, value: message.id
-    = photo.input_field :event_id, as: :hidden, value: message.online.event_id
-    = photo.input_field :online_id, as: :hidden, value: message.online_id
-    = photo.file_field :file, multiple: true, name: "photo[file]"

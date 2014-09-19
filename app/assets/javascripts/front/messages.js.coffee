@@ -12,9 +12,10 @@ $ ->
 
   window.setLongPull = () ->
     # заменить на цикл
-    setTimeout window.controller.pullMessage, 200    
+    setTimeout window.controller.pullMessage, 200
 
 class MessagesController
+  self = {}
   sendMessage: ->
     $.ajax
       url: '/messages'
@@ -29,6 +30,17 @@ class MessagesController
           $('div[role=spinner]').removeClass('hidden')
           $('div[role=messages-container]').prepend(data)
           $('input[role=message-body]').val('')
+          self.sendPhotosForMessage()
+
+  self.sendPhotosForMessage = ->
+    photosIds = []
+    for photoEl in $("[role=preload]")
+      photosIds.push photoEl.id
+    messageId = $('[role=online-message]')[0].getAttribute('data-id')
+    $.ajax
+      url: '/messages/assing_photos_to_message'
+      data: {photos_ids: photosIds, message_id: messageId}
+      method: "PUT"
 
   pullMessage: ->
     $.ajax
@@ -39,5 +51,4 @@ class MessagesController
         if data
           $('div[role=messages-container]').prepend(data)
           lastMessageEl = $('.messages-bock p')[0]
-          $('#last_message_id').val $(lastMessageEl).data('id') 
-  
+          $('#last_message_id').val $(lastMessageEl).data('id')

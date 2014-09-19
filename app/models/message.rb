@@ -3,8 +3,6 @@ class Message < ActiveRecord::Base
   belongs_to :online
   has_many :photos
 
-  accepts_nested_attributes_for :photos
-
   validates :body, :user_id, :online_id, presence: true
 
   scope :last_online_messages, -> (message, online_id){where("created_at > ?", message.created_at).where(online_id: online_id)}

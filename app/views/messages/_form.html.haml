@@ -5,11 +5,14 @@
     .form-group
       = f.input_field :body, role: 'message-body', class: 'form-control', placeholder: 'Новое сообщение'
       %p{role: 'message-body-errors'}
-        = f.simple_fields_for :photos, message.photos.build do |p|
-          = p.input_field :event_id, as: :hidden, value: message.online.event_id
-          = p.input_field :online_id, as: :hidden, value: message.online_id
-          %br
-          = p.input_field :remote_file_url, placeholder: 'Cсылка на изображение'
+  %p
+    Загрузить фото
+    #photos
+      = simple_form_for Photo.new, url: photos_path do |photo|
+        = photo.input_field :message_id, as: :hidden, value: message.id
+        = photo.input_field :event_id, as: :hidden, value: message.online.event_id
+        = photo.input_field :online_id, as: :hidden, value: message.online_id
+        = photo.file_field :file, multiple: true, name: "photo[file]"
   %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить
 
 

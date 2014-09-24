@@ -16,6 +16,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_slug(permitted_params[:slug])
+    @last_messages = @event.messages.first(10)
+    @last_photos = @event.photos.last(20)
+    @onlines = @event.onlines.page(params[:page]).per(5)
   end
 
   def events_by_date

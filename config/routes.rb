@@ -16,7 +16,7 @@ Rails4Template::Application.routes.draw do
     resources :events
   end
 
-  resources :events, only: [:new, :create]
+  resources :events, only: [:index, :new, :create]
   resources :onlines
 
   post "messages" => 'messages#create', as: 'messages'

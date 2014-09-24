@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
   has_many :onlines
+  has_many :photos
+  has_many :messages, through: :onlines
 
 private
   def convert_title_to_slug

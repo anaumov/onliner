@@ -1,7 +1,9 @@
 class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :online
+  belongs_to :event
   has_many :photos
+
 
   validates :body, :user_id, :online_id, presence: true
 

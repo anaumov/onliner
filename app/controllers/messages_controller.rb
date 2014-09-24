@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.new permitted_params[:message]
+    @message = Message.new(permitted_params[:message])
+
     if @message.save
+      assign_photos_for(@message) if params[:photos_ids]
       render :single_message, layout: false
     else
       render json: {errors: @message.all_errors}
@@ -21,6 +23,11 @@ class MessagesController < ApplicationController
   end
 
 private
+  def assign_photos_for message
+    photos = Photo.find(params[:photos_ids])
+    photos.each {|photo| photo.update_attributes(message_id: @message.id)}
+  end
+
   def permitted_params
     params.permit!
   end

@@ -17,9 +17,12 @@ $ ->
 class MessagesController
   self = {}
   sendMessage: ->
+    data = $('form[role=message-form]').serializeArray()
+    for photoEl in $("[role=preload]")
+      data.push {name: 'photos_ids[]', value: photoEl.id}
     $.ajax
       url: '/messages'
-      data: $('form[role=message-form]').serializeArray()
+      data: data
       method: 'POST'
       beforeSend: ->
         $('div[role=spinner]').addClass('hidden')
@@ -27,6 +30,7 @@ class MessagesController
         if data.errors
           $('p[role=message-body-errors]').html(data.errors)
         else
+          $("[role=preload]").remove()
           $('div[role=spinner]').removeClass('hidden')
           $('div[role=messages-container]').prepend(data)
           $('input[role=message-body]').val('')

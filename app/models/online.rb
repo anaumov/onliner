@@ -4,5 +4,7 @@ class Online < ActiveRecord::Base
   belongs_to :event
   has_many :messages
 
+
   validates :user_id, :title, presence: true
+
 end

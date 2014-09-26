@@ -1,3 +1,14 @@
-- @events.each do |event|
-  %h3= link_to event.title, event_path(event)
-  %p.small= event.description
+.col-md-8
+  %h3 Cобытия
+  - @events.each do |event|
+    %p= link_to event.title, event_path(event)
+  %h4= link_to "Все события", events_path
+  %h3 Фото
+  - @photos.each do |photo|
+    = image_tag(photo.file.thumb.url)
+  %h4= link_to "Все фото", ""
+.col-md-4
+  %h3 Репортеры:
+  - @users.each do |user|
+    %p= link_to user.username, profile_path(user)
+

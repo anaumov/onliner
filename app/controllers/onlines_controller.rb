@@ -1,6 +1,6 @@
 class OnlinesController < ApplicationController
   def index
-    @onlines = current_user.onlines
+    @onlines = Online.all.page(params[:page]).per(20)
   end
 
   def create

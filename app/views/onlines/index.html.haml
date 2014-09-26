@@ -1,0 +1,13 @@
+%h1 Онлайны
+
+- @onlines.each do |online|
+  %p
+    = image_tag(online.photo.thumb.url)
+    = online.title
+    = link_to "Читать онлайн", online_path(online, username: current_user.username)
+    %p
+      Автор онлайна:
+      = link_to "#{online.user.username}", profile_path(username: online.user.username)
+
+.pager
+  = paginate @onlines

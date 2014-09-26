@@ -27,4 +27,5 @@
       Автор онлайна:
       = link_to "#{online.user.username}", profile_path(username: online.user.username)
 
-= paginate @onlines
+.pager
+  = paginate @onlines

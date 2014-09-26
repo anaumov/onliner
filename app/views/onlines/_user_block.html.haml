@@ -1,4 +1,4 @@
 = link_to profile_path(username: user.username) do
   = image_tag user.avatar.url(:thumb), class: 'round-avatar'
-%h5.full_name= link_to user.full_name, profile_path(username: user.username)
+%h5.full_name= link_to user.username, profile_path(username: user.username)
 %small= user.bio

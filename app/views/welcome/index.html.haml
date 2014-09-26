@@ -7,8 +7,5 @@
   - @photos.each do |photo|
     = image_tag(photo.file.thumb.url)
   %h4= link_to "Все фото", ""
-.col-md-4
-  %h3 Репортеры:
-  - @users.each do |user|
-    %p= link_to user.username, profile_path(user)
+
 

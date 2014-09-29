@@ -241,10 +241,8 @@ group :test do
 end
 
 group :deploy do
-  gem 'capistrano', '~> 3.1', :require => false
-  gem 'capistrano-rbenv', '~> 2.0',  :require => false
-  gem 'capistrano-rails', '~> 1.1', :require => false
-  gem 'capistrano-bundler', :require => false
+  gem 'capistrano', "~> 2.15.5"
+  gem 'rvm-capistrano'
 end
 
 group :production do

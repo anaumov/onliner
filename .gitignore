@@ -20,7 +20,7 @@ public/uploads/
 db/*.sqlite3
 gems.tags
 .sass-cache/
-config/database.yml
+/config/database.yml
 public/assets/
 .bash_history
 .bashrc

@@ -5,14 +5,14 @@
   - @last_messages.each do |message|
     %p
       %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
-      = link_to "#{message.user.username}", profile_path(username: message.user.username)
+      = link_to "#{message.user.username}", user_path(username: message.user.username)
       = message.body
 
 %h3
   Последние фото
   %p
     - @last_photos.each do |photo|
-      = link_to image_tag(photo.file.thumb.url), online_path(photo.online, username: current_user.username)
+      = link_to image_tag(photo.file.thumb.url), online_path(photo.online, username: photo.online.user.username)
 %h3= link_to "Все фото", ""
 
 %p= link_to "Создать онлайн", new_online_path(event_id: @event.id)
@@ -22,10 +22,10 @@
   %p
     = image_tag(online.photo.thumb.url)
     = online.title
-    = link_to "Читать онлайн", online_path(online, username: current_user.username)
+    = link_to "Читать онлайн", online_path(online, username: online.user.username)
     %p
       Автор онлайна:
-      = link_to "#{online.user.username}", profile_path(username: online.user.username)
+      = link_to "#{online.user.username}", user_path(username: online.user.username)
 
 .pager
   = paginate @onlines

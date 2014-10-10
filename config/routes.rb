@@ -25,13 +25,18 @@ Rails4Template::Application.routes.draw do
   post "photos" => 'photos#create', as: 'photos'
 
   get "events" => 'events#index'
-  get ":username" => 'profile#index', as: 'profile'
 
-  get ":username/edit" => 'profile#edit', as: 'edit_profile'
-  put ":username/update" => 'profile#update', as: 'update_profile'
+  get "my" => 'profile#index', as: 'profile'
+  namespace :my do
+    get "edit" => 'profile#edit', as: 'edit_profile'
+    put "update" => 'profile#update', as: 'update_profile'
+  end
 
   get "events/:date" => 'events#events_by_date', as: 'events_by_date'
   get "events/:date/:slug" => 'events#show', as: 'event_date_slug'
+
+
+  get ":username" => 'users#show', as: 'user'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

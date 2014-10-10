@@ -1,4 +1,4 @@
 .col-md-4
   %h3 Репортеры:
   - @users.each do |user|
-    %p= link_to user.username, profile_path(username: user.username)
+    %p= link_to user.username, user_path(username: user.username)

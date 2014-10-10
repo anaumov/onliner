@@ -7,7 +7,5 @@
         %span.icon-bar
       = link_to Settings.app.title, root_url, :class => 'navbar-brand'
     .collapse.navbar-collapse
-      = render_navigation :expand_all => true, :renderer => :bootstrap
-      = link_to 'Онлайны', onlines_path
-      = link_to 'Cобытия', events_path(@events)
-      = link_to 'Выход', destroy_user_session_path, method: :delete
+      = render_navigation renderer: :bootstrap
+      = render_navigation renderer: :bootstrap, context: :personal

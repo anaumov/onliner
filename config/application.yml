@@ -1,7 +1,6 @@
 defaults: &defaults
   app:
     title: Онлайнер
-
     asset_host: http://178.62.162.25
 
     default_url_options: &default_url_options
@@ -19,6 +18,14 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  app:
+    title: Онлайнер
+    asset_host: http://localhost:3000
+
+    default_url_options: &default_url_options
+      host: amliner.ru
+      port: 80
+
   action_mailer:
     <<: *action_mailer
     delivery_method: :smtp

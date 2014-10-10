@@ -1,17 +1,17 @@
 %h1.profile-header= @online.title
-= edit_online_link(@online)
+= edit_online_path(username: @online.user.username, id: @online.id) if current_user == @online.user
 
 .row
   .col-xs-3.user-info-block
-    = render 'onlines/user_block', user: local_user
+    = render 'onlines/user_block', user: @online.user
   .col-xs-9
     %h3= link_to @online.event.title, event_path(@online.event)
     %small= @online.description
 
--#%p= image_tag @online.photo.url(:thumb) if @online.photo
+%p= image_tag @online.photo.url(:thumb) if @online.photo
 
-- if self_profile?
-  = render 'messages/form', message: current_user.messages.new(online_id: @online.id)
+-# if current_user can edit online
+= render 'messages/form', message: current_user.messages.new(online_id: @online.id) if current_user == @online.user
 
 - #TODO перенести в cell, весь список
 %div{role: 'spinner'}

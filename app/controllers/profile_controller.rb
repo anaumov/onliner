@@ -1,14 +1,12 @@
 class ProfileController < ApplicationController
+  before_action :authenticate_user!
 
   def index
+    @user = current_user
   end
 
   def edit
-    if current_user.username == params[:username]
-      @user = current_user
-    else
-      redirect_to profile_path
-    end
+    @user = current_user
   end
 
   def update

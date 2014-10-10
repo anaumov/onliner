@@ -10,7 +10,7 @@ ru:
   time:
     formats:
       time: "%H:%M"
-      time_date: "%H:%M, %d %B"
+      time_date: "%H:%M %e.%m"
       time_date_year: "%H:%M, %d-%m-%Y"
       default: "%e %B %Y %H:%M"
       today: 'today at %H:%M'

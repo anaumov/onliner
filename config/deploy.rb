@@ -1,11 +1,10 @@
 require "bundler/capistrano"
-require "rvm/capistrano"
 
-server "212.71.255.164", :web, :app, :db, primary: true
+server "178.62.162.25", :web, :app, :db, primary: true
 
 set :application, "onliner"
 set :user, "deployer"
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_to, "/home/#{user}/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 

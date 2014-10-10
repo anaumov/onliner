@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/onliner/current"
+root = "/home/deployer/onliner/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"

@@ -1,11 +1,11 @@
 .row.event-block
   .col-xs-3.user-info-block.event-user-block
-    = image_tag local_user.avatar.url(:thumb), class: 'round-avatar'
-    = link_to "Редактировать профиль", edit_profile_path
-    %h5= current_user.full_name
-    %small.user-desc= local_user.bio
+    = image_tag @user.avatar.url(:thumb), class: 'round-avatar'
+    = link_to "Редактировать профиль", my_edit_profile_path
+    %h5= @user.full_name
+    %small.user-desc= @user.bio
   .col-xs-9.last-messages-block
-    - local_user.onlines.each do |online|
+    - @user.onlines.each do |online|
       .plain-online-block
         %h4= link_to online.title, app_online_path(online)
         %p.small.online-desc= online.description

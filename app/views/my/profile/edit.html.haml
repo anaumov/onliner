@@ -1,4 +1,4 @@
-= simple_form_for @user, url: update_profile_path(username: @user.username), method: :put do |f|
+= simple_form_for @user, url: my_update_profile_path, method: :put do |f|
   = f.input :full_name
   = f.input :bio
   = f.input :avatar, as: :file, :hint => f.template.image_tag(f.object.avatar.url(:thumb))

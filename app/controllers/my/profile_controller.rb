@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class My::ProfileController < ApplicationController
   before_action :authenticate_user!
 
   def index

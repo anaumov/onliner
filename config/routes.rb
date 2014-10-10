@@ -26,7 +26,7 @@ Rails4Template::Application.routes.draw do
 
   get "events" => 'events#index'
 
-  get "my" => 'profile#index', as: 'profile'
+  get "my" => 'my/profile#index', as: 'profile'
   namespace :my do
     get "edit" => 'profile#edit', as: 'edit_profile'
     put "update" => 'profile#update', as: 'update_profile'

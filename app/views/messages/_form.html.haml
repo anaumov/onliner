@@ -14,6 +14,12 @@
       = f.file_field :file, multiple: true, name: "photo[file]"
     #photos
 
+      %script#template-upload{:type => "text/x-tmpl"}
+        .upload
+          {%=o.name%}
+          .progress
+            .progress-bar{style: "width: 0%"}
+
   %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить
 
 

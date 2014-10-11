@@ -4,7 +4,7 @@
   %p
     = image_tag(online.photo.thumb.url)
     = online.title
-    = link_to "Читать онлайн", online_path(online, username: online.user.username)
+    = link_to "Читать онлайн", user_online_path(online, username: online.user.username)
     %p
       Автор онлайна:
       = link_to "#{online.user.username}", user_path(username: online.user.username)

@@ -37,6 +37,7 @@ Rails4Template::Application.routes.draw do
 
   get ":username" => 'users#show', as: 'user'
   get ":username/:id" => 'onlines#show', as: 'user_online'
+  get ":username/:id/edit" => 'onlines#show', as: 'user_online_edit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

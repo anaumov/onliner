@@ -21,7 +21,7 @@ Rails4Template::Application.routes.draw do
   resources :photos, only: [:index, :create]
 
   post "messages" => 'messages#create', as: 'messages'
-  get "last_messages" => 'messages#last_messages'
+  get "messages/latest_for_online" => 'messages#latest_for_online'
 
   get "events" => 'events#index'
 

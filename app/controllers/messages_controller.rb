@@ -11,15 +11,9 @@ class MessagesController < ApplicationController
     end
   end
 
-  def assing_photos_to_message
-    photos =  Photo.find(params[:photos_ids])
-    photos.each {|photo| photo.update_attributes(message_id: params[:message_id])}
-  end
-
-  def last_messages
-    last_viewed_message = Message.find params[:last_message_id]
-    @messages = Message.last_online_messages(last_viewed_message, params[:online_id])
-    render layout: false
+  def latest_for_online
+    @messages = Message.where(online_id: params[:online_id]).where('id > ?', params[:last_message_id])
+    render :latest_for_online, layout: false
   end
 
 private

@@ -1,4 +1,4 @@
-%h1.profile-header= @online.title
+%h1.profile-header{"data-id" => @online.id, role: 'online'}= @online.title
 = link_to "редактировать", user_online_edit_path(@online, username: @online.user.username), style: "display: block; margin-top: -20px;" if current_user == @online.user
 
 .row{style: "margin-top: 20px"}
@@ -24,6 +24,4 @@
     = render "messages/single_message", message: message
 
 :javascript
-  $.ready(function() {
-    window.setLongPull()
-  })
+  pullMessages();

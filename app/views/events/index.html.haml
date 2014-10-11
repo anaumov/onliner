@@ -1,4 +1,3 @@
-%h1 Актуальные события
+%h1 Все события
 
-- @events.each do |event|
-  %p= link_to event.title, event_path(event)
+= render "shared/events", events: @events

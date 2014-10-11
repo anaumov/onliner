@@ -1,5 +1,6 @@
-%p{'data-id' => message.id, role: 'online-message'}
-  %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
-  = message.body
+%div.message-item{'data-id' => message.id, role: 'online-message'}
+  %p
+    %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
+    = message.body
   - message.photos.each do |p|
     = image_tag(p.file.thumb.url)

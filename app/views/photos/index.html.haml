@@ -1,0 +1,4 @@
+%h2 Последние фото
+- @photos.each do |photo|
+  = link_to user_online_path(username: photo.online.user.username, id: photo.online_id) do
+    = image_tag photo.file.thumb.url, alt: photo.online.title, title: photo.online.title

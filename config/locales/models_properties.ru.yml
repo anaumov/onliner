@@ -1,3 +1,11 @@
 ru:
   message:
     body: "Тело сообщения"
+  simple_form:
+    labels:
+      user:
+        username: "Логин"
+        email: Электронная почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_me: Запомнить меня

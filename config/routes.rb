@@ -17,12 +17,11 @@ Rails4Template::Application.routes.draw do
   end
 
   resources :events, only: [:index, :new, :create]
-  resources :onlines
+  resources :onlines, only: [:index, :new, :create, :update, :destroy]
+  resources :photos, only: [:index, :create]
 
   post "messages" => 'messages#create', as: 'messages'
   get "last_messages" => 'messages#last_messages'
-
-  post "photos" => 'photos#create', as: 'photos'
 
   get "events" => 'events#index'
 
@@ -37,6 +36,7 @@ Rails4Template::Application.routes.draw do
 
 
   get ":username" => 'users#show', as: 'user'
+  get ":username/:id" => 'onlines#show', as: 'user_online'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

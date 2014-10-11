@@ -1,21 +1,16 @@
-%h1= @event.title
-%p= @event.description
+%h1
+  = @event.title
+  = link_to "Создать онлайн", new_online_path(event_id: @event.id), class: "btn btn-success pull-right" if current_user
+
 %p
-  Последние сообщения
-  - @last_messages.each do |message|
-    %p
-      %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
-      = link_to "#{message.user.username}", user_path(username: message.user.username)
-      = message.body
+  %i= @event.description
 
-%h3
-  Последние фото
+%h4 Последние сообщения
+- @last_messages.each do |message|
   %p
-    - @last_photos.each do |photo|
-      = link_to image_tag(photo.file.thumb.url), online_path(photo.online, username: photo.online.user.username)
-%h3= link_to "Все фото", ""
-
-%p= link_to "Создать онлайн", new_online_path(event_id: @event.id)
+    %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
+    = link_to "#{message.user.username}", user_path(username: message.user.username)
+    = render "messages/single_message", message: message
 
 %h3 Онлайны
 - @onlines.each do |online|

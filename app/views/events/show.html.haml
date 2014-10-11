@@ -5,22 +5,30 @@
 %p
   %i= @event.description
 
-%h4 Последние сообщения
-- @last_messages.each do |message|
-  %p
-    %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
-    = link_to "#{message.user.username}", user_path(username: message.user.username)
-    = render "messages/single_message", message: message
+= image_tag @event.photo.url, class: "event-show__image"
 
-%h3 Онлайны
-- @onlines.each do |online|
-  %p
-    = image_tag(online.photo.thumb.url)
-    = online.title
-    = link_to "Читать онлайн", online_path(online, username: online.user.username)
+- if @last_messages.any?
+  %h4 Последние сообщения
+  - @last_messages.each do |message|
     %p
-      Автор онлайна:
-      = link_to "#{online.user.username}", user_path(username: online.user.username)
+      %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
+      = link_to "#{message.user.username}", user_path(username: message.user.username)
+      = message.body
+      %br
+      - message.photos.each do |photo|
+        = link_to photo.file.url do
+          = image_tag(photo.file.thumb.url)
 
-.pager
-  = paginate @onlines
+- if @onlines.any?
+  %h3 Онлайны
+  - @onlines.each do |online|
+    %p
+      = image_tag(online.photo.thumb.url)
+      = online.title
+      = link_to "Читать онлайн", online_path(online, username: online.user.username)
+      %p
+        Автор онлайна:
+        = link_to "#{online.user.username}", user_path(username: online.user.username)
+
+  .pager
+    = paginate @onlines

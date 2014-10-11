@@ -11,7 +11,7 @@
       = f.input_field :message_id, as: :hidden, value: message.id
       = f.input_field :event_id, as: :hidden, value: message.online.event_id
       = f.input_field :online_id, as: :hidden, value: message.online_id
-      = f.file_field :file, multiple: true, name: "photo[file]"
+      = f.file_field :file, multiple: true, name: "photo[file]", accept: "image/*;capture=camera"
     #photos
 
       %script#template-upload{:type => "text/x-tmpl"}

@@ -202,10 +202,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'rb-inotify', '~> 0.9', :require => false
   gem "rspec-rails", ">= 2.11.0"
-  if RUBY_PLATFORM =~ /darwin/
-    gem 'rb-fsevent', '~> 0.9.1', require: false
-    gem 'ruby_gntp'
-  end
 end
 
 

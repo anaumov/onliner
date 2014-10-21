@@ -28,6 +28,7 @@ sendMessage = ->
         $('input[role=message-body]').val('')
 
 pullMessages = ->
+  return
   $.ajax
     url: '/messages/latest_for_online'
     data:

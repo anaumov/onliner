@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# configures your navigation
-
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :sign_in, 'Войти', new_user_session_path unless current_user

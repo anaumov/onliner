@@ -1,7 +1,14 @@
-%div.message-item{'data-id' => message.id, role: 'online-message'}
-  %p
-    %strong= I18n.l message.created_at, format: date_format_messages(message.created_at)
-    = message.body
-  - message.photos.each do |photo|
-    = link_to photo.file.url do
-      = image_tag(photo.file.thumb.url)
+%article.col-md-10{'data-id' => message.id, role: 'online-message'}
+  .time.hidden-xs= I18n.l message.created_at, format: date_format_messages(message.created_at)
+  .timemob.visible-xs= I18n.l message.created_at, format: date_format_messages(message.created_at)
+  .media-body{style: "margin-left:-15px;"}
+    
+    - if message.photos.count > 1
+      - message.photos.each do |photo|
+        = link_to photo.file.url do
+          = image_tag photo.file.url, class: "message__photo-item"
+    - elsif message.photos.any?
+      = image_tag message.photos[0].file.url, class: "message__sigle-photo"
+
+    %p= message.body
+

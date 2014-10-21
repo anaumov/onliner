@@ -13,17 +13,14 @@ Rails4Template::Application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    resources :events
   end
 
-  resources :events, only: [:index, :new, :create]
-  resources :onlines, only: [:index, :new, :create, :update, :destroy]
+  resources :onlines
   resources :photos, only: [:index, :create]
 
   post "messages" => 'messages#create', as: 'messages'
   get "messages/latest_for_online" => 'messages#latest_for_online'
 
-  get "events" => 'events#index'
 
   get "my" => 'my/profile#index', as: 'profile'
   namespace :my do
@@ -31,13 +28,10 @@ Rails4Template::Application.routes.draw do
     put "update" => 'profile#update', as: 'update_profile'
   end
 
-  get "events/:date" => 'events#events_by_date', as: 'events_by_date'
-  get "events/:date/:slug" => 'events#show', as: 'event_date_slug'
-
 
   get ":username" => 'users#show', as: 'user'
   get ":username/:id" => 'onlines#show', as: 'user_online'
-  get ":username/:id/edit" => 'onlines#show', as: 'user_online_edit'
+  get ":username/:id/edit" => 'onlines#edit', as: 'user_online_edit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

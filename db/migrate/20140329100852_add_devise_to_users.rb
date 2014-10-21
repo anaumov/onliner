@@ -17,6 +17,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.string :bio
       t.string :website
       t.string :twitter
+      t.string :username, null: false
 
       t.timestamps
     end

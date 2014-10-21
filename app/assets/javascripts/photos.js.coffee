@@ -1,5 +1,5 @@
 jQuery ->
-  $('#photo_file').fileupload
+  $('[role=message-photos]').fileupload
     dataType: "script"
     add: (e, data) ->
       types = /(\.|\/)(gif|jpe?g|png)$/i

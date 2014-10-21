@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def app_online_path online
+    -# TODO кривой роутинг http://localhost:3000/onlines/1?username=anaumov
     online_path(username: online.user.username, id: online.id)
   end
 

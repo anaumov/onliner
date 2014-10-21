@@ -5,11 +5,9 @@ class CreateOnline < ActiveRecord::Migration
       t.text :description
       t.string :photo
       t.integer :user_id, null: false
-      t.integer :category_id, null: false
       t.timestamps
     end
 
     add_index :onlines, :user_id
-    add_index :onlines, :category_id
   end
 end

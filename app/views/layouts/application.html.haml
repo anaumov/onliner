@@ -4,21 +4,25 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     %title= content_for?(:title) ? yield(:title) : Settings.app.title
     %meta{:content => content_for?(:description) ? yield(:description) : Settings.app.title, :name => "description"}
+    %meta{name: "viewport", content: "width=device-width"}
     = stylesheet_link_tag :application, :media => "all"
     = javascript_include_tag :application
     = csrf_meta_tags
     = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
-    = render 'layouts/navigation'
-    #main{:role => "main"}
+  %body{:class => "#{controller_name} #{action_name}", "cz-shortcut-listen" => "true"}
+    #wrap
+      = render "layouts/header"
+      = render 'layouts/flash_messages'
       .container
-        .content
-          .row
-            .col-sm-8
-              = render 'layouts/messages'
-              = yield
-            .col-sm-4
-              = render_cell :sidebar, :random_users
-      %footer.footer
-        .container
-          %small.muted= app_version
+        .row
+          .col-md-2{:style => "padding-top:50px;"}
+            %div{:style => "font-size: 10px;padding-top: 12px;text-align: left;padding-right: 13px;width: 135px;float: right;"}
+              Мы делаем Онлайнер, чтобы всегда получать актуальную информацию с мест событий в режиме реального времени
+          .col-md-8.transl= yield
+          .col-md-2
+      = yield :pre_footer
+
+      %footer.container
+        .about
+          .pull-left © 2014 Onlainer
+          = render_navigation context: :footer

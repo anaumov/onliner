@@ -1,4 +1,42 @@
-.new_message-form
+= content_for :pre_footer do
+  .new-message__form
+    .container
+      .row
+        .col-md-2.col-sm-2
+        .col-md-8.col-sm-10.admintext{:style => "padding-top: 10px;background-color: rgba(247,247,247,0.97);padding-bottom: 10px;border-left: 1px solid #eee;border-right: 1px solid #eee;border-top: 1px solid #eee;"}
+          .new-message__photo-wrapper
+            %span.glyphicon.glyphicon-camera
+
+            = simple_form_for Photo.new, url: photos_path do |f|
+              = f.input_field :message_id, as: :hidden, value: message.id
+              = f.input_field :online_id, as: :hidden, value: message.online_id
+              = f.input_field :file, role: 'message-photos', name: "photo[file]", multiple: true, accept: "image/*;capture=camera", class: 'new-message__photo-input'
+
+          .col-sm-9.col-xs-9
+            = simple_form_for message, url: messages_path, html: {role: 'message-form'} do |f|
+              = f.input_field :user_id, as: :hidden
+              = f.input_field :online_id, as: :hidden
+              .form-group
+                %textarea.form-control{:rows => "1", :style => "resize: none; overflow-y: hidden; position: absolute; top: 0px; left: -9999px; height: 34px; width: 531px; line-height: 20px; text-decoration: none; letter-spacing: 0px;", :tabindex => "-1"}
+                = f.input_field :body, role: 'message-body', class: 'form-control', placeholder: 'Новое сообщение',rows: "1", style: "resize: none; overflow-y: hidden;"
+                %p{role: 'message-body-errors'}
+
+          %div{:style => "float:left;margin-top:7px;"}
+            %a{style: "text-transform: capitalize;letter-spacing: inherit;padding: 0px 0px;font-size: 14px;font-weight: 500;text-decoration:none;", role: "submit-message"} отпр.
+          .clearfix
+          #photos
+            - photos.each do |photo|
+              = render "photos/photo", photo: photo
+
+            %script#template-upload{:type => "text/x-tmpl"}
+              .upload
+                {%=o.name%}
+                .progress
+                  .progress-bar{style: "width: 0%"}
+
+        .col-md-2.hidden-sm
+
+-#.new_message-form
   = simple_form_for message, url: messages_path, html: {role: 'message-form'} do |f|
     = f.input :user_id, as: :hidden
     = f.input :online_id, as: :hidden
@@ -6,13 +44,9 @@
       = f.input_field :body, role: 'message-body', class: 'form-control', placeholder: 'Новое сообщение'
       %p{role: 'message-body-errors'}
   %p
-    Загрузить фото
-    = simple_form_for Photo.new, url: photos_path do |f|
-      = f.input_field :message_id, as: :hidden, value: message.id
-      = f.input_field :event_id, as: :hidden, value: message.online.event_id
-      = f.input_field :online_id, as: :hidden, value: message.online_id
-      = f.file_field :file, multiple: true, name: "photo[file]", accept: "image/*;capture=camera"
     #photos
+      - photos.each do |photo|
+        = render "photos/photo", photo: photo
 
       %script#template-upload{:type => "text/x-tmpl"}
         .upload
@@ -21,7 +55,3 @@
             .progress-bar{style: "width: 0%"}
 
   %a.btn.btn-primary.pull-right{role: "submit-message"} Отправить
-
-
-
-

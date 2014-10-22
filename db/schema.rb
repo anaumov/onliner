@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917101547) do
+ActiveRecord::Schema.define(version: 20141018051055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,15 +49,6 @@ ActiveRecord::Schema.define(version: 20140917101547) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "events", force: true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "photo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug",        default: "", null: false
-  end
-
   create_table "messages", force: true do |t|
     t.string   "body"
     t.integer  "user_id"
@@ -76,24 +67,19 @@ ActiveRecord::Schema.define(version: 20140917101547) do
     t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
   end
 
-  add_index "onlines", ["event_id"], name: "index_onlines_on_event_id", using: :btree
   add_index "onlines", ["user_id"], name: "index_onlines_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "title"
-    t.string   "file"
-    t.integer  "message_id"
+    t.string   "file",       null: false
     t.integer  "online_id",  null: false
-    t.integer  "event_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "message_id"
   end
 
-  add_index "photos", ["event_id"], name: "index_photos_on_event_id", using: :btree
-  add_index "photos", ["message_id"], name: "index_photos_on_message_id", using: :btree
   add_index "photos", ["online_id"], name: "index_photos_on_online_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -107,9 +93,9 @@ ActiveRecord::Schema.define(version: 20140917101547) do
     t.string   "bio"
     t.string   "website"
     t.string   "twitter"
+    t.string   "username",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

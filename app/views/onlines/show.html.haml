@@ -1,27 +1,32 @@
-%h1.profile-header{"data-id" => @online.id, role: 'online'}= @online.title
-= link_to "редактировать", user_online_edit_path(@online, username: @online.user.username), style: "display: block; margin-top: -20px;" if current_user == @online.user
+= content_for :top_block do
+  .nav.navbar-nav.hidden-xs{style: "margin-left:5px;"}
+    %li.online__top-block-item
+      = image_tag @online.user.avatar.thumb.url,  class: "user__avatar-small"
+    %li{style: "padding-top: 10px; padding-left: 10px;"}
+      %h3
+        = link_to @online.title, online_path, style: "border-bottom: 0px;", "data-id" => @online.id, role: 'online'
+        %span.label.label-danger live
 
-.row{style: "margin-top: 20px"}
-  .col-xs-3.user-info-block
-    = render 'onlines/user_block', user: @online.user
-  .col-xs-9
-    %h3= link_to @online.event.title, event_path(@online.event)
-    %small= @online.description
-
-    = image_tag @online.photo.url, style: "width: 100%;" if @online.photo
-
--# if current_user can edit online
-= render 'messages/form', message: current_user.messages.new(online_id: @online.id) if current_user == @online.user
-
-- #TODO перенести в cell, весь список
-%div{role: 'spinner'}
+  %ul.nav.navbar-nav.navbar-right{style: "margin-left:5px;"}
+    %li{style: "width: 200px;"}
+      %span.online__autoupdate
+        Автоматическое обновление
+      .btn-group.btn-toggle{style: "margin-top:10px; float: left;"}> 
+        %button.btn.btn-success.online__toggle-live-btn.active Да
+        %button.btn.btn-white.online__toggle-live-btn Нет
 
 = form_tag '', role: 'last-message-form' do
   = hidden_field_tag :online_id, @online.id
 
-%div.messages-bock{role: 'messages-container'}
+
+%div{role: 'messages-container'}
   - @online.messages.each do |message|
     = render "messages/single_message", message: message
+
+
+-# if current_user can edit online
+= render 'messages/form', message: current_user.messages.new(online_id: @online.id), photos: @online.just_loaded_photos if current_user == @online.user
+
 
 :javascript
   pullMessages();

@@ -1,5 +1,17 @@
-= f.input :user_id, as: :hidden
-= f.input :title
-= f.input :description
-= f.input :photo, hint: (image_tag(f.object.photo.url(:thumb)) if f.object.photo)
-= f.submit "Сохранить"
+= f.input_field :user_id, as: :hidden
+.form-group.col-xs-9{style: "padding-left: 0px;"}
+  %label.onliner-label Название
+  = f.input_field :title, class: "form-control"
+  %p.help-block.onliner-input-desc Заголовок должен быть наполнен смыслом, чтобы можно было понять, о чем будет трансляция.
+  = f.error :title, class: "onliner-input-desc"
+.form-group.col-xs-9{style: "padding-left: 0px;"}
+  %label.onliner-label Описание
+  = f.input_field :description, class: "form-control"
+  %p.help-block.onliner-input-desc Старайтесь оформлять описание трансляции так, чтобы их было удобно читать.
+  = f.error :description, class: "onliner-input-desc"
+.form-group.col-xs-9{style: "padding-left: 0px;"}
+  %label.onliner-label Изображение трансляции
+  = f.input_field :photo, class: "onliner-file-input"
+  = image_tag(f.object.photo.url(:thumb)) if f.object.photo
+  = f.error :photo, class: "onliner-input-desc"
+  = f.submit "Создать трансляцию", class: "btn btn-success btn-update onliner-btn"

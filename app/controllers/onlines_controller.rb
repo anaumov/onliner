@@ -7,7 +7,8 @@ class OnlinesController < ApplicationController
     @online = Online.new permitted_params[:online]
 
     if @online.save
-      redirect_to app_online_path(@online)
+      #redirect_to app_online_path(@online)
+       redirect_to online_path(username: @online.user.username, id: @online.id)
     else
       render :new
     end

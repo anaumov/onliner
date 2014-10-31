@@ -20,13 +20,13 @@
 
 
 %div{role: 'messages-container'}
-  - @online.messages.each do |message|
-    = render "messages/single_message", message: message
-
+  - if @online.messages.empty?
+    %div Трансляция еще не началась
+  - else
+    - @online.messages.each do |message|
+      = render "messages/single_message", message: message
 
 -# if current_user can edit online
 = render 'messages/form', message: current_user.messages.new(online_id: @online.id), photos: @online.just_loaded_photos if current_user == @online.user
-
-
 :javascript
   pullMessages();

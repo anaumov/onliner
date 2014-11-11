@@ -24,6 +24,7 @@ ru:
       short_human: '%e %B'
       human: '%e %B %Y'
       input: '%e/%m/%Y'
+      time_date_year_full:  '%H:%M, %-d %B %Y'
   activerecord:
     errors:
       messages:

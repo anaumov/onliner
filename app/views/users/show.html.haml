@@ -1,14 +1,30 @@
-.row.event-block
-  .col-xs-3.user-info-block.event-user-block
+.row
+  .col-md-2
     = image_tag @user.avatar.url(:thumb), class: 'round-avatar'
-    = link_to "Редактировать профиль", my_edit_profile_path if self_profile?(@user)
-    %h5= @user.full_name
-    %small.user-desc= @user.bio
-  .col-xs-9.last-messages-block
+  .col-md-10
+    %h3= @user.full_name
+    = @user.bio
+    %div{:style => "margin-top: 8px;"}
+    =link_to @user.website, @user.website
+    %span{:style => "margin-left:10px;"}
+    = link_to "@#{@user.twitter}", "http://twitter.com/#{@user.twitter}"
+.row{:style => "margin-top: 20px;"}
+  .col-md-12
+    %h3{:style => "font-size: 13px;text-transform: uppercase;letter-spacing: .06em;color: #000!important;font-weight: 500;border-bottom: 1px solid #eee;margin-right: 12px;padding-bottom: 7px;margin-left: 6px;"} Онлайны
     - @user.onlines.each do |online|
-      .plain-online-block
-        %h4= link_to online.title, app_online_path(online)
-        %p.small.online-desc= online.description
-        %h6.last-messages-header Последине сообщения:
-        - online.messages.last(3).each do |message|
-          = render "messages/single_message", message: message
+      %article.media{:style => "display:block"}
+        %a.icon.pull-left{:href => app_online_path(online)}
+          =image_tag online.photo.url(:thumb), class:"media-object img-circle"
+        .pull-right
+          %div{:style => "float: left; margin-right: 15px; "}
+            = image_tag @user.avatar.url(:thumb), class: 'media-object img-circle', style: "width:32px"
+          %div{:style => "float: left;padding-top: 5px;color: #c3c3c3;font-size: 14px;"}
+            =image_tag "comment.png", class:""
+        .media-body.col-md-9{:style => "margin-left:-10px;"}
+          %h3
+            =link_to online.title, app_online_path(online)
+            %span.label.label-danger live
+          %p
+            =online.description
+          %h5
+            = l(online.created_at, format: :time_date_year_full)

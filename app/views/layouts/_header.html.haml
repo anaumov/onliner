@@ -20,7 +20,35 @@
               
             %ul.nav.navbar-nav.navbar-right
               %li
-                = link_to new_online_path, class: "btn btn-update btn-sm" do
-                  = image_tag "start_broadcast.png", style: "width:16px;margin-right:3px;"
-                  Начать трансляцию
+                = image_tag "login.png", style: "width: 9px;margin-top: 21px;float: left;"
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => "font-size: 11px;margin-right: 15px;color: #000;border-bottom: 1px dotted #888;padding-bottom: 0px;float: left;margin-left: 7px;line-height: 15px;margin-top: 14px;"} Войти
+                .dropdown-menu.keep_open{:role => "menu", :style => "width:230px;"}
+                  %div{:style => "padding:15px 15px 0px 15px;"}
+                    %ul.login{:role => "tablist", :style => "list-style: none; padding: 0px; margin: 0px;"}
+                      %li.active{:style => "float:left;"}
+                        %a{"data-toggle" => "tab", :href => "#signin", :role => "tab"} Авторизация
+                      %li{:style => "margin: 0px 3px;padding: 0px;float: left;"} &nbsp;
+                      %li.signup
+                        %a{"data-toggle" => "tab", :href => "#signup", :role => "tab"} Регистрация
+                  .tab-content{:style => "margin-top:-3px;"}
+                    #signin.tab-pane.active
+                      %form{:role => "form", :style => "padding:15px;"}
+                      = simple_form_for(:user, url: user_session_path) do |f|
+                        .form-group
+                          = f.input :email, :required => false, :autofocus => true, :for => "exampleInputEmail1"
+                        .form-group
+                          = f.input :password, :required => false, :for => "exampleInputPassword1"
+                          = f.button :submit, "Войти", :style => "font-size: 13px!important;letter-spacing: 1px;text-transform: uppercase;border-radius: 5px;margin-top: 4px;margin-bottom: -6px;", :class => "btn btn-success btn-update btn-block"
+                    #signup.tab-pane
+                      %form{:role => "form", :style => "padding:15px;"}
+                        .form-group
+                          %label{:for => "exampleInputEmail1"} Логин
+                          %input#exampleInputEmail1.form-control{:placeholder => "", :type => "email"}
+                        .form-group
+                          %label{:for => "exampleInputEmail1"} Электронная почта
+                          %input#exampleInputEmail1.form-control{:placeholder => "", :type => "email"}
+                        .form-group
+                          %label{:for => "exampleInputPassword1"} Пароль
+                          %input#exampleInputPassword1.form-control{:placeholder => "", :type => "password"}
+                        %button.btn.btn-success.btn-update.btn-block{:style => "font-size: 11px!important;letter-spacing: 1px;text-transform: uppercase;border-radius: 5px;margin-top: 4px;margin-bottom: -6px;", :type => "button"} Зарегистрироваться
       .col-md-2

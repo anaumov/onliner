@@ -115,7 +115,6 @@ padding-bottom: 60px;
 article {margin-bottom: 0px;border-bottom: 1px dotted #eee;padding-bottom: 10px;display: inline-block;clear: both;}
 article:last-child {border-bottom: 0px dotted #eee;}
 
-article .icon { position: absolute;left: -15px;z-index: 999; }
 article .icon img { width:54px; height:54px; }
 article .icon i { display:block; position:absolute; left:50%; top:50%; margin:-13px 0 0 -19px; width:27px; height:27px; color: rgba(255,255,255,.7); font-size:27px; line-height:1; text-indent:0; }
 

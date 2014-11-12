@@ -105,6 +105,9 @@ text-decoration:none;
 	text-decoration:none;
 }
 
+.padding-for-sing-in{
+	padding: 15px;
+}
 
 .dropdown-menu {
 position: absolute;

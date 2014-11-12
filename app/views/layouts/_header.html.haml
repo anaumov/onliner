@@ -32,9 +32,7 @@
                         %a{"data-toggle" => "tab", :href => "#signup", :role => "tab"} Регистрация
                   .tab-content{:style => "margin-top:-3px;"}
                     #signin.tab-pane.active
-                      /%form{:role => "form", :style => "padding:15px;"}
-                      = simple_form_for(:user, url: user_session_path, :class => "padding-for-sing-in") do |f|
-                        /= f.simple_fields_for :style => "padding: 15px;"
+                      = simple_form_for :user, url: user_session_path, html: {class: "padding-for-sing-in"} do |f|
                         .form-group
                           = f.input :email, :required => false, :autofocus => true, :for => "exampleInputEmail1"
                         .form-group
